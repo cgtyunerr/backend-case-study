@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from monorepo.core.ledgers.services.base_ledger_service import BaseLedgerService
+from app.monorepo.core.ledgers.services.base_ledger_service import BaseLedgerService
 
 
 router = APIRouter()

@@ -1,7 +1,7 @@
-from monorepo.core.ledgers.schemas import BaseLedgerOperation
+from app.monorepo import BaseLedgerOperation
 
 
-class HealthAILedgerOperation(BaseLedgerOperation): 
+class TravelAILedgerOperation(BaseLedgerOperation):
     # Shared operations
     DAILY_REWARD = "DAILY_REWARD"
     SIGNUP_CREDIT = "SIGNUP_CREDIT"
