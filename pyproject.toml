@@ -13,6 +13,7 @@ alembic = "^1.15.1"
 sqlalchemy = "^2.0.38"
 pydantic = "^2.10.6"
 fastapi-cache2 = {version = "^0.2.2", extras = ["all"]}
+pydantic-settings = "^2.8.1"
 
 
 [tool.poetry.group.dev.dependencies]
