@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "backend-case-study"
-version = "0.1.0"
+version = "0.1.1"
 description = "Backend case study project."
 authors = ["Çağatay Üner <cgtyuner06@gmail.com>"]
 readme = "README.md"
@@ -47,7 +47,7 @@ filterwarnings = "ignore::DeprecationWarning"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.0"
+version = "0.1.1"
 tag_format = "$version"
 version_files = ["pyproject.toml"]
 
