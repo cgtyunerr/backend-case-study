@@ -1,7 +1,11 @@
+"""HealthAI schemas."""
+
 from app.monorepo.core.ledgers.schemas import BaseLedgerOperation
 
 
-class HealthAILedgerOperation(BaseLedgerOperation): 
+class HealthAILedgerOperation(BaseLedgerOperation):
+    """HealthAI ledger operation schema."""
+
     # Shared operations
     DAILY_REWARD = "DAILY_REWARD"
     SIGNUP_CREDIT = "SIGNUP_CREDIT"

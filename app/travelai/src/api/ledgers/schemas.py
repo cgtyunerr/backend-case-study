@@ -1,7 +1,11 @@
-from app.monorepo import BaseLedgerOperation
+"""TravelAI ledger operation schemas."""
+
+# from app.monorepo import BaseLedgerOperation
 
 
-class TravelAILedgerOperation(BaseLedgerOperation):
+class TravelAILedgerOperation:
+    """TravelAI ledger operation schema."""
+
     # Shared operations
     DAILY_REWARD = "DAILY_REWARD"
     SIGNUP_CREDIT = "SIGNUP_CREDIT"
