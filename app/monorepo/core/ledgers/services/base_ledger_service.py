@@ -1,9 +1,13 @@
-class BaseLedgerService():
+"""Base ledger service module."""
 
-    def update_balance(
-        self,
-        operation: ?, # What type should this be?
-        # Other params if needed
-    ):
-        # Implementation
-        pass
+
+class BaseLedgerService:
+    """Base ledger service."""
+
+    # def update_balance(
+    #     self,
+    #     operation: ?, # What type should this be?
+    #     # Other params if needed
+    # ):
+    #     # Implementation
+    #     pass
