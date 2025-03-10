@@ -21,16 +21,11 @@ repos:
         args: [--branch, main]
       - id: trailing-whitespace
 
-  - repo: https://github.com/facebook/usort
-    rev: v1.0.7
-    hooks:
-      - id: usort
-
   - repo: https://github.com/ambv/black
     rev: 25.1.0
     hooks:
       - id: black
-        language_version: python3.11
+        language_version: python3.10
         args: [--line-length=88]
 
   - repo: https://github.com/pycqa/flake8
@@ -39,12 +34,6 @@ repos:
       - id: flake8
         args: [--max-line-length=88]
 
-
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: v1.3.0
-    hooks:
-      - id: python-safety-dependencies-check
-        files: requirements
 
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.4
