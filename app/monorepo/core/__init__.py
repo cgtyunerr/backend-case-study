@@ -6,10 +6,12 @@ from .exceptions import (
     ConflictError,
     UnprocessableEntityError,
 )
+from .model import LedgerModel
 
 __all__ = [
     "InvalidInputError",
     "NotFoundError",
     "ConflictError",
     "UnprocessableEntityError",
+    "LedgerModel",
 ]
