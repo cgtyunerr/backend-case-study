@@ -1,5 +1,7 @@
 """App configurations."""
 
+from pydantic import computed_field
+from pydantic_core import MultiHostUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -21,6 +23,22 @@ class DatabaseSettings(BaseSettings):
     USER: str
     PASS: str
     PORT: int
+
+    @computed_field
+    def db_url(self) -> MultiHostUrl:
+        """Generate database url.
+
+        Returns:
+            Database url
+        """
+        return MultiHostUrl.build(  # noqa
+            scheme="postgresql+asyncpg",
+            username=self.USER,
+            password=self.PASS,
+            host=self.HOST,
+            path=self.NAME,
+            port=self.PORT,
+        )
 
 
 class Settings(BaseSettings):
