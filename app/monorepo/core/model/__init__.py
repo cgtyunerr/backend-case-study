@@ -1,7 +1,7 @@
 """Orm model package."""
 
-from .ledger import LedgerModel
+from .ledger import LedgerBaseModel
 
 __all__ = [
-    "LedgerModel",
+    "LedgerBaseModel",
 ]

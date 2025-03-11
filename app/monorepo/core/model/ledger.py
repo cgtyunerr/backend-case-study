@@ -6,7 +6,7 @@ from .base import Base
 from .mixin import text, integer
 
 
-class LedgerModel(Base):
+class LedgerBaseModel(Base):
     """Ledger model."""
 
     amount: Mapped[integer]

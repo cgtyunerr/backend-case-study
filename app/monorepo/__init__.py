@@ -1,7 +1,8 @@
 """Monorepo package."""
 
-from .core import LedgerModel
+from .core import LedgerBaseModel, BaseLedgerOperation
 
 __all__ = [
-    "LedgerModel",
+    "LedgerBaseModel",
+    "BaseLedgerOperation",
 ]

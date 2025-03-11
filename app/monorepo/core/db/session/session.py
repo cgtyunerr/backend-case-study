@@ -23,7 +23,6 @@ class DatabaseSessionManager(BaseSessionManager):
         async with self.async_session() as session:
             try:
                 yield session
-                await session.commit()
             except Exception as exception:
                 await session.rollback()
                 raise exception from exception

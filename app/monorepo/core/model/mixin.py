@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Annotated
 
 from sqlalchemy import BIGINT, DateTime, String
-from sqlalchemy.orm import Mapped, declarative_mixin, declared_attr, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column
 
 # Types
 item_id = Annotated[
@@ -42,13 +42,3 @@ class CreatedAtMixin:
         DateTime(timezone=True),
         nullable=False,
     )
-
-
-@declarative_mixin
-class TableNameMixin:
-    """Mixin for table_name."""
-
-    @declared_attr
-    def __tablename__(cls) -> str:
-        """Generate table name."""
-        return cls.__name__.lower()  # type: ignore[attr-defined]

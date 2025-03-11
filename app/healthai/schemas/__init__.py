@@ -1,0 +1,1 @@
+"""HealthAI schemas package."""
