@@ -1,0 +1,1 @@
+"""TravelAI schemas package."""

@@ -1,0 +1,1 @@
+"""TravelAI orm models package."""
