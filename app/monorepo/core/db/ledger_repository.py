@@ -1,40 +1,78 @@
 """Core ledger repository module."""
 
-from typing import Sequence
+from typing import Generic, Type, TypeVar
 
-from pydantic import BaseModel, ConfigDict, InstanceOf, validate_call
+from pydantic import ConfigDict, InstanceOf, validate_call
+from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from app.monorepo import LedgerBaseModel
+from app.monorepo import (
+    LedgerBaseModel,
+    NotFoundError,
+    InvalidInputError,
+    CreateTransactionBaseModel,
+)
 
 
-class LedgerRepository(BaseModel):
+T = TypeVar("T", bound=LedgerBaseModel)
+G = TypeVar("G", bound=CreateTransactionBaseModel)
+
+
+class LedgerRepository(Generic[T, G]):
     """Core ledger repository module."""
 
+    model: Type[T]
+    schema: Type[G]
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     @validate_call
-    async def get_all(
-        self, session: InstanceOf[AsyncSession]
-    ) -> Sequence[LedgerBaseModel]:
-        """Get all the entities.
+    async def get_current_balance_by_owner_id(
+        self, owner_id: str, session: InstanceOf[AsyncSession]
+    ) -> int:
+        """Get a entity.
 
         Arguments:
             session: db session.
+            owner_id: owner id.
 
         Return:
-            All the ledger entities.
+            Ledger entities about owner.
+
+        Raises:
+            NotFoundError.
         """
-        result = await session.execute(select(LedgerBaseModel))
-        ledger_entities = result.scalars().all()
-        return ledger_entities
+        result = await session.execute(
+            select(func.sum(self.model.amount)).filter(self.model.owner_id == owner_id)
+        )
+        current_balance = result.scalar()
+        if current_balance is None:
+            raise NotFoundError("There has no any ledger record about the owner.")
 
-    async def get(self):
-        """Get a entity."""
+        return current_balance
 
-    async def update(self):
-        """Update a db row."""
+    @validate_call
+    async def add(self, session: InstanceOf[AsyncSession], create_model: G) -> int:
+        """Add a ledger transaction.
 
-    async def delete(self):
-        """Delete a db row."""
+        Arguments:
+            session: db session.
+            create_model: create model.
+
+        Return:
+            Id of the new entity.
+
+        Raises:
+            InvalidInputError: If the nonce values are conflict.
+        """
+        new_entry = self.model(**create_model.model_dump())
+        session.add(new_entry)
+        try:
+            await session.commit()
+            await session.refresh(new_entry)
+        except IntegrityError:
+            await session.rollback()
+            raise InvalidInputError("This transaction was already happened.")
+
+        return new_entry.id

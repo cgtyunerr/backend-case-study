@@ -6,7 +6,7 @@ from .exceptions import (
     ConflictError,
     UnprocessableEntityError,
 )
-from .ledgers import BaseLedgerOperation
+from .ledgers import BaseLedgerOperation, CreateTransactionBaseModel
 from .model import LedgerBaseModel
 
 __all__ = [
@@ -16,4 +16,5 @@ __all__ = [
     "UnprocessableEntityError",
     "LedgerBaseModel",
     "BaseLedgerOperation",
+    "CreateTransactionBaseModel",
 ]

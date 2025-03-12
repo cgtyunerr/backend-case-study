@@ -26,6 +26,8 @@ integer = Annotated[
 
 text = Annotated[str, mapped_column(String, nullable=False)]
 
+unique_text = Annotated[str, mapped_column(String, nullable=False, unique=True)]
+
 # Mixins
 
 

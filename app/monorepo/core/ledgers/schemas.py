@@ -2,6 +2,8 @@
 
 import enum
 
+from pydantic import BaseModel
+
 
 class BaseLedgerOperation(enum.Enum):
     """Base ledger operation enum."""
@@ -27,3 +29,14 @@ class SharedLedgerOperation(BaseLedgerOperation):
     SIGNUP_CREDIT = "SIGNUP_CREDIT"
     CREDIT_SPEND = "CREDIT_SPEND"
     CREDIT_ADD = "CREDIT_ADD"
+
+
+class CreateTransactionBaseModel(BaseModel):
+    """Create transaction base model.
+
+    owner_id: Owner id.
+    nonce: unique string.
+    """
+
+    owner_id: str
+    nonce: str
