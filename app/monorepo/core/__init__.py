@@ -1,5 +1,6 @@
 """Monorepo core package."""
 
+from .db import database_session_manager
 from .exceptions import (
     InvalidInputError,
     NotFoundError,
@@ -17,4 +18,5 @@ __all__ = [
     "LedgerBaseModel",
     "BaseLedgerOperation",
     "CreateTransactionBaseModel",
+    "database_session_manager",
 ]
