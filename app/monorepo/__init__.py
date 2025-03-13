@@ -3,23 +3,23 @@
 from .api import SessionDep
 from .core import (
     LedgerBaseModel,
+    Base,
     BaseLedgerOperation,
     NotFoundError,
     ConflictError,
     InvalidInputError,
     UnprocessableEntityError,
     CreateTransactionBaseModel,
-    database_session_manager,
 )
 
 __all__ = [
     "LedgerBaseModel",
+    "Base",
     "BaseLedgerOperation",
     "NotFoundError",
     "ConflictError",
     "InvalidInputError",
     "UnprocessableEntityError",
     "CreateTransactionBaseModel",
-    "database_session_manager",
     "SessionDep",
 ]

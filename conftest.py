@@ -5,7 +5,7 @@ import os
 import pytest
 
 
-@pytest.fixture(scope="module", autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def set_env_variable():
     os.environ["DB__NAME"] = "postgres"
     os.environ["DB__USER"] = "dbuser"

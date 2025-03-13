@@ -1,12 +1,12 @@
 """Ledger orm model."""
 
-from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import as_declarative, Mapped
 
-from .base import Base
 from .mixin import text, integer, unique_text
 
 
-class LedgerBaseModel(Base):
+@as_declarative()
+class LedgerBaseModel:
     """Ledger model."""
 
     amount: Mapped[integer]

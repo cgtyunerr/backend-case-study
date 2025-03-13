@@ -5,30 +5,35 @@ import enum
 from pydantic import BaseModel
 
 
-class BaseLedgerOperation(enum.Enum):
-    """Base ledger operation enum."""
+def extend_enum(inherited_enum):
+    """Extend enum decorator."""
 
-    @classmethod
-    def _include_shared_operation(cls):
-        """Include all the shared ledger operations."""
-        for name, member in SharedLedgerOperation.__members__.items():
-            if name not in cls.__members__:
-                cls._member_map_[name] = member
+    def wrapper(added_enum):
+        """Extend enum method."""
+        joined = {}
+        for item in inherited_enum:
+            joined[item.name] = item.value
+        for item in added_enum:
+            joined[item.name] = item.value
+        return enum.Enum(added_enum.__name__, joined)
 
-    @classmethod
-    def __init_subclass__(cls):
-        """Init subclass method."""
-        super().__init__()
-        cls._include_shared_operation()
+    return wrapper
 
 
-class SharedLedgerOperation(BaseLedgerOperation):
+class SharedLedgerOperation(enum.Enum):
     """Shared operation schema."""
 
     DAILY_REWARD = "DAILY_REWARD"
     SIGNUP_CREDIT = "SIGNUP_CREDIT"
     CREDIT_SPEND = "CREDIT_SPEND"
     CREDIT_ADD = "CREDIT_ADD"
+
+
+@extend_enum(SharedLedgerOperation)
+class BaseLedgerOperation(enum.Enum):
+    """Base ledger operation enum."""
+
+    pass
 
 
 class CreateTransactionBaseModel(BaseModel):

@@ -8,7 +8,7 @@ from .exceptions import (
     UnprocessableEntityError,
 )
 from .ledgers import BaseLedgerOperation, CreateTransactionBaseModel
-from .model import LedgerBaseModel
+from .model import LedgerBaseModel, Base
 
 __all__ = [
     "InvalidInputError",
@@ -19,4 +19,5 @@ __all__ = [
     "BaseLedgerOperation",
     "CreateTransactionBaseModel",
     "database_session_manager",
+    "Base",
 ]
