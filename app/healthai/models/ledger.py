@@ -1,11 +1,19 @@
 """HealthAI orm model."""
 
+from typing import Annotated
 
-class HealthAILedgerEntryModel:
+from sqlalchemy import Enum
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.healthai import HealthAILedgerOperation
+from app.monorepo import LedgerBaseModel
+
+
+class HealthAILedgerEntryModel(LedgerBaseModel):
     """HealthAI ledger entry orm model."""
-
-    # Sqlalchemy model
 
     __tablename__ = "ledger_entries"
 
-    # operation:  # What type should this be? Note: It should not be str.
+    operation: Mapped[
+        Annotated[HealthAILedgerOperation, mapped_column(Enum, nullable=False)]
+    ]
