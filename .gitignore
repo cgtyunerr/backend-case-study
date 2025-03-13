@@ -1,6 +1,3 @@
 .idea
 poetry.lock
 **/__pycache__
-alembic.ini
-app/healthai/alembic
-app/travelai/alembic

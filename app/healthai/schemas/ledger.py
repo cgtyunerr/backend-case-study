@@ -1,9 +1,13 @@
 """HealthAI schemas."""
 
+from enum import Enum
+
 from app.monorepo import BaseLedgerOperation, CreateTransactionBaseModel
+from app.monorepo.core.commons import extend_enum
 
 
-class HealthAILedgerOperation(BaseLedgerOperation):
+@extend_enum(BaseLedgerOperation)
+class HealthAILedgerOperation(Enum):
     """HealthAI ledger operation schema."""
 
     CONTENT_CREATION = "CONTENT_CREATION"

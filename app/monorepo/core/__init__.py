@@ -1,7 +1,7 @@
 """Monorepo core package."""
 
 from .db import database_session_manager
-from .exceptions import (
+from app.monorepo.core.commons import (
     InvalidInputError,
     NotFoundError,
     ConflictError,
