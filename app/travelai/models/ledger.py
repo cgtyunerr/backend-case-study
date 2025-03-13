@@ -1,10 +1,18 @@
 """TravelAI entry orm model."""
 
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import ENUM
 
-class TravelAILedgerEntryModel:
+from app.travelai import TravelAILedgerOperation
+from app.monorepo import LedgerBaseModel
+
+
+class TravelAILedgerEntryModel(LedgerBaseModel):
     """TravelAI ledger entry orm model."""
 
     # Sqlalchemy model
     __tablename__ = "ledger_entries"
 
-    # operation: ? # What type should this be? Note: It should not be str.
+    operation = Column(
+        ENUM(TravelAILedgerOperation, name="travelai_ledger_operation"), nullable=False
+    )

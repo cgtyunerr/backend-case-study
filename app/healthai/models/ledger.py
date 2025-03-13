@@ -1,11 +1,17 @@
 """HealthAI orm model."""
 
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import ENUM
 
-class HealthAILedgerEntryModel:
+from app.healthai import HealthAILedgerOperation
+from app.monorepo import LedgerBaseModel
+
+
+class HealthAILedgerEntryModel(LedgerBaseModel):
     """HealthAI ledger entry orm model."""
-
-    # Sqlalchemy model
 
     __tablename__ = "ledger_entries"
 
-    # operation:  # What type should this be? Note: It should not be str.
+    operation = Column(
+        ENUM(HealthAILedgerOperation, name="healthai_ledger_operation"), nullable=False
+    )

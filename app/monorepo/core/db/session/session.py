@@ -5,7 +5,7 @@ from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.settings import settings
+from app.monorepo.settings import settings
 
 from .base_session import BaseSessionManager
 

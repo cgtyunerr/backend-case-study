@@ -45,7 +45,7 @@ repos:
     rev: 6.1.1
     hooks:
       - id: pydocstyle
-        exclude: ^(tests/|.*/tests/.*|conftest.py|scripts/)
+        exclude: ^(tests/|.*/tests/.*|conftest.py|scripts/|.*/alembic/.*)
         additional_dependencies:
           - toml
 
@@ -60,4 +60,4 @@ repos:
           - types-requests
           - types-python-dateutil
           - types-pytz
-        exclude: ^(tests/|.*/tests/.*/|scripts/)
+        exclude: ^(tests/|.*/tests/.*/|scripts/|.*/alembic/.*)

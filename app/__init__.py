@@ -1,6 +1,6 @@
 """App module."""
 
-from .settings import settings
+from app.monorepo.settings import settings
 
 __all__ = [
     "settings",

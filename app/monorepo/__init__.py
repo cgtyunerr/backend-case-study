@@ -3,7 +3,6 @@
 from .api import SessionDep
 from .core import (
     LedgerBaseModel,
-    Base,
     BaseLedgerOperation,
     NotFoundError,
     ConflictError,
@@ -14,7 +13,6 @@ from .core import (
 
 __all__ = [
     "LedgerBaseModel",
-    "Base",
     "BaseLedgerOperation",
     "NotFoundError",
     "ConflictError",

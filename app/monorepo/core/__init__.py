@@ -1,14 +1,14 @@
 """Monorepo core package."""
 
 from .db import database_session_manager
-from .exceptions import (
+from app.monorepo.core.commons import (
     InvalidInputError,
     NotFoundError,
     ConflictError,
     UnprocessableEntityError,
 )
 from .ledgers import BaseLedgerOperation, CreateTransactionBaseModel
-from .model import LedgerBaseModel, Base
+from .model import LedgerBaseModel
 
 __all__ = [
     "InvalidInputError",
@@ -19,5 +19,4 @@ __all__ = [
     "BaseLedgerOperation",
     "CreateTransactionBaseModel",
     "database_session_manager",
-    "Base",
 ]
