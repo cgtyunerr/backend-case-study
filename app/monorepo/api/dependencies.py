@@ -2,7 +2,8 @@
 
 from typing import AsyncGenerator, Annotated
 
-from fastapi import Depends
+from fastapi import Depends, Path
+from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.monorepo.core.db import database_session_manager
@@ -15,3 +16,11 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
 
 
 SessionDep = Annotated[AsyncSession, Depends(get_session)]
+
+
+class OwnerIDPathDependency(BaseModel):
+    """Event log ID path dependency."""
+
+    owner_id: str = Path(
+        description="Owner ID.",
+    )
