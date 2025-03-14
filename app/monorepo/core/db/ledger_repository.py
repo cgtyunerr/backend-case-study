@@ -53,11 +53,14 @@ class LedgerRepository(Generic[T, G]):
         return current_balance
 
     @validate_call
-    async def add(self, session: InstanceOf[AsyncSession], create_model: G) -> int:
+    async def add(
+        self, session: InstanceOf[AsyncSession], amount: int, create_model: G
+    ) -> int:
         """Add a ledger transaction.
 
         Arguments:
             session: db session.
+            amount: amount.
             create_model: create model.
 
         Return:
@@ -66,13 +69,19 @@ class LedgerRepository(Generic[T, G]):
         Raises:
             InvalidInputError: If the nonce values are conflict.
         """
-        new_entry = self.model(**create_model.model_dump())
-        session.add(new_entry)
-        try:
-            await session.commit()
-            await session.refresh(new_entry)
-        except IntegrityError:
-            await session.rollback()
-            raise InvalidInputError("This transaction was already happened.")
+        current_balance: int = await self.get_current_balance_by_owner_id(
+            owner_id=create_model.owner_id, session=session
+        )
+        if current_balance + amount >= 0:
+            new_entry = self.model(**create_model.model_dump())
+            session.add(new_entry)
+            try:
+                await session.commit()
+                await session.refresh(new_entry)
+            except IntegrityError:
+                await session.rollback()
+                raise InvalidInputError("This transaction was already happened.")
 
-        return new_entry.id
+            return new_entry.id
+        else:
+            raise InvalidInputError("Insufficient balance.")
