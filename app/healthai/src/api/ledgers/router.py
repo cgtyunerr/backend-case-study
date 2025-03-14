@@ -1,18 +1,18 @@
 """HealthAI api router."""
 
-from fastapi import APIRouter
-
-from app.monorepo.core.ledgers.services.base_ledger_service import (
-    BaseLedgerService,
-)
-
-
-router = APIRouter()
-ledger_service = (
-    BaseLedgerService()
-)  # routers should use the ledger service from the core
-
-
+# from fastapi import APIRouter
+#
+# from app.monorepo.core.ledgers.services.base_ledger_service import (
+#     BaseLedgerService,
+# )
+#
+#
+# router = APIRouter()
+# ledger_service = (
+#     BaseLedgerService()
+# )  # routers should use the ledger service from the core
+#
+#
 # Example endpoint
 # @router.post(
 #     "/ledger-entry",
