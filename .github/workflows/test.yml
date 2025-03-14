@@ -69,3 +69,6 @@ jobs:
 
       - name: HealthAI tests
         run: poetry run python -m pytest -lv app/healthai/tests
+
+      - name: TravelAI tests
+        run: poetry run python -m pytest -lv app/travelai/tests

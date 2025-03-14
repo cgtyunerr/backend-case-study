@@ -45,4 +45,4 @@ run:
 	@echo "----------------------"
 	@echo "- Running API server -"
 	@echo "----------------------"
-	uvicorn app.healthai.src.api.main:api --reload --log-level debug
+	uvicorn app.travelai.src.api.main:api --reload --log-level debug

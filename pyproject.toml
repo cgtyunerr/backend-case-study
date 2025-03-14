@@ -48,7 +48,7 @@ filterwarnings = "ignore::DeprecationWarning"
 name = "cz_conventional_commits"
 version = "1.0.0"
 tag_format = "$version"
-version_files = ["pyproject.toml"]
+version_files = ["pyproject.toml", "app/healthai/src/api/main.py", "app/travelai/src/api/main.py"]
 
 [tool.black]
 line-length = 79

@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.healthai.src.api.main import api as health_api
 from app.monorepo.settings import settings
 from app.monorepo.core.db.session.session import DatabaseSessionManager
+from app.travelai.src.api.main import api as travel_api
 
 
 @pytest.fixture(scope="function")
@@ -23,4 +24,10 @@ async def session() -> AsyncGenerator[AsyncSession, None]:
 @pytest.fixture(scope="session")
 def health_client():
     with TestClient(health_api) as client:
+        yield client
+
+
+@pytest.fixture(scope="session")
+def travel_client():
+    with TestClient(travel_api) as client:
         yield client
