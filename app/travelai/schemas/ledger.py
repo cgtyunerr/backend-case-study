@@ -1,9 +1,13 @@
 """TravelAI ledger operation schemas."""
 
+from enum import Enum
+
 from app.monorepo import BaseLedgerOperation, CreateTransactionBaseModel
+from app.monorepo.core.commons import extend_enum
 
 
-class TravelAILedgerOperation(BaseLedgerOperation):
+@extend_enum(BaseLedgerOperation)
+class TravelAILedgerOperation(Enum):
     """TravelAI ledger operation schema."""
 
     CONTENT_CREATION = "CONTENT_CREATION"

@@ -10,8 +10,8 @@ from app.monorepo import LedgerBaseModel
 class TravelAILedgerEntryModel(LedgerBaseModel):
     """TravelAI ledger entry orm model."""
 
-    # Sqlalchemy model
     __tablename__ = "ledger_entries"
+    __table_args__ = {"schema": "travelai"}
 
     operation = Column(
         ENUM(TravelAILedgerOperation, name="travelai_ledger_operation"), nullable=False
