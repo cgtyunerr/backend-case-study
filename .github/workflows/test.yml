@@ -66,3 +66,6 @@ jobs:
 
       - name: Monorepo tests
         run: poetry run python -m pytest -lv app/monorepo/tests
+
+      - name: HealthAI tests
+        run: poetry run python -m pytest -lv app/healthai/tests

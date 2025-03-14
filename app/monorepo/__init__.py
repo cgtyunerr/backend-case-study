@@ -1,6 +1,6 @@
 """Monorepo package."""
 
-from .api import SessionDep
+from .api import SessionDep, OwnerIDPathDependency
 from .core import (
     LedgerBaseModel,
     BaseLedgerOperation,
@@ -20,4 +20,5 @@ __all__ = [
     "UnprocessableEntityError",
     "CreateTransactionBaseModel",
     "SessionDep",
+    "OwnerIDPathDependency",
 ]
