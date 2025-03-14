@@ -5,6 +5,8 @@ from typing import Annotated
 
 from sqlalchemy import BIGINT, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.sql import func
+
 
 # Types
 item_id = Annotated[
@@ -40,7 +42,6 @@ class IdMixin:
 class CreatedAtMixin:
     """Mixin for created_at."""
 
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
-        nullable=False,
+    created_on: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
     )

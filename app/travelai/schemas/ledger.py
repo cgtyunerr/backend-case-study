@@ -20,4 +20,4 @@ class CreateTransactionModel(CreateTransactionBaseModel):
     ledger_operation: The type of ledger operation.
     """
 
-    ledger_operation: TravelAILedgerOperation
+    operation: TravelAILedgerOperation

@@ -15,12 +15,20 @@ config = context.config
 target_metadata = LedgerBaseModel.metadata
 
 
+def include_object(object, name, type_, reflected, compare_to):
+    if type_ == "table":
+        return object.schema in ["healthai"]
+    return True
+
+
 def do_run_migrations(connection):
 
     context.configure(
         connection=connection,
         target_metadata=target_metadata,
+        include_schemas=True,
         version_table_schema="healthai",
+        include_object=include_object,
     )
 
     with context.begin_transaction():
