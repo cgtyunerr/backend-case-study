@@ -40,9 +40,16 @@ pull:
 	git checkout master
 	git pull
 
-.PHONY: run
-run:
+.PHONY: runt
+runt:
 	@echo "----------------------"
 	@echo "- Running API server -"
 	@echo "----------------------"
 	uvicorn app.travelai.src.api.main:api --reload --log-level debug
+
+.PHONY: runh
+runh:
+	@echo "----------------------"
+	@echo "- Running API server -"
+	@echo "----------------------"
+	uvicorn app.healthai.src.api.main:api --reload --log-level debug
