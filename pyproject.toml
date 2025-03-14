@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "backend-case-study"
-version = "1.0.0"
+version = "1.1.0"
 description = "Backend case study project."
 authors = ["Çağatay Üner <cgtyuner06@gmail.com>"]
 readme = "README.md"
@@ -46,7 +46,7 @@ filterwarnings = "ignore::DeprecationWarning"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "1.0.0"
+version = "1.1.0"
 tag_format = "$version"
 version_files = ["pyproject.toml", "app/healthai/src/api/main.py", "app/travelai/src/api/main.py"]
 
