@@ -6,7 +6,7 @@ from app.travelai import ledger_router
 from app.monorepo.middleware import ErrorHandlerMiddleware
 
 api: FastAPI = FastAPI(
-    title="TravelAI API", description="TravelAI http API.", version="1.0.0"
+    title="TravelAI API", description="TravelAI http API.", version="1.1.0"
 )
 
 api.add_middleware(ErrorHandlerMiddleware)
